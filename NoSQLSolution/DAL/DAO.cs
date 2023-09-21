@@ -23,16 +23,13 @@ namespace DAL
         // de "Collection moet aangepast worden naar de naam van aan te maken collection"
         public List<Ticket> GetAllTickets()
         {
-            return database.GetCollection<Ticket>("Collection").Find(new BsonDocument()).ToList();
+            return database.GetCollection<Ticket>("Tickets").Find(new BsonDocument()).ToList();
         }
 
-        public Ticket getCaseByID(int ticketID)
+        public List<Ticket> getTicketsByEmail(string Email)
         {
-            var filter = Builders<Ticket>.Filter.Eq("ID", ticketID);
-            return database.GetCollection<Ticket>("Les2").Find(filter).FirstOrDefault();
+            var filter = Builders<Ticket>.Filter.Eq("User", Email);
+            return database.GetCollection<Ticket>("Les2").Find(filter).ToList();
         }
-        //test voor de 2de keer 
     }
-
-
 }
