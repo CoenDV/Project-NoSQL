@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum TicketPriority
+    public enum TypeOfIncident
     {
-        Closed, Low, Medium, High
+        Software, Hardware, Service
     }
 }

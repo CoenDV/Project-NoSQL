@@ -11,7 +11,5 @@ namespace Logic
         {
             dao = new DAO();
         }
-
-        
     }
 }

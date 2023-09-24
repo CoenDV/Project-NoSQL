@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal enum UserType
+    public enum UserType
     {
         RegularUser, ServiceDesk
     }

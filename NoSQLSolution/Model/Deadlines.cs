@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum TicketPriority
+    public enum Deadlines
     {
-        Closed, Low, Medium, High
+        oneDay = 1, twoDays, threeDays, fourDays, fiveDays, sixDays, sevenDays
     }
 }

@@ -80,3 +80,4 @@ C:\Users\coen\OneDrive - Hogeschool Inholland\Laptop\Documenten\School\Project N
 C:\Users\coen\OneDrive - Hogeschool Inholland\Laptop\Documenten\School\Project NoSQL\NoSQLSolution\DemoApp\bin\Debug\CircularProgressBar.xml
 C:\Users\coen\OneDrive - Hogeschool Inholland\Laptop\Documenten\School\Project NoSQL\NoSQLSolution\DemoApp\obj\Debug\DemoApp.AddUserForm.resources
 C:\Users\coen\OneDrive - Hogeschool Inholland\Laptop\Documenten\School\Project NoSQL\NoSQLSolution\DemoApp\obj\Debug\DemoApp.ManageUsersForm.resources
+C:\Users\coen\OneDrive - Hogeschool Inholland\Laptop\Documenten\School\Project NoSQL\NoSQLSolution\DemoApp\obj\Debug\DemoApp.TicketView.resources
