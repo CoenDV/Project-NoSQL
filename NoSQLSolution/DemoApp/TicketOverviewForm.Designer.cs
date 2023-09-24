@@ -131,6 +131,7 @@
             this.btnCreateIncident.TabIndex = 8;
             this.btnCreateIncident.Text = "CREATE INCIDENT";
             this.btnCreateIncident.UseVisualStyleBackColor = true;
+            this.btnCreateIncident.Click += new System.EventHandler(this.btnCreateIncident_Click);
             // 
             // listViewResults
             // 
@@ -146,6 +147,8 @@
             this.listViewResults.Size = new System.Drawing.Size(593, 589);
             this.listViewResults.TabIndex = 9;
             this.listViewResults.UseCompatibleStateImageBehavior = false;
+            this.listViewResults.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listViewResults_MouseClick);
+            this.listViewResults.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewResults_MouseDoubleClick);
             // 
             // ID
             // 
@@ -198,7 +201,10 @@
             this.Controls.Add(this.btnIncidentManagement);
             this.Controls.Add(this.btnDashboard);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "TicketOverviewForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TicketOverviewForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

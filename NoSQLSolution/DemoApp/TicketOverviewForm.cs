@@ -15,16 +15,18 @@ namespace DemoApp
 {
     public partial class TicketOverviewForm : Form
     {
-        private Databases databases;
+        private TicketsLogic ticketsLogic;
         private List<Ticket> tickets;
 
         public TicketOverviewForm()
         {
             InitializeComponent();
 
-            databases = new Databases();
-            tickets = databases.GetAllTickets();
+            ticketsLogic = new TicketsLogic();
+            tickets = ticketsLogic.GetAllTickets();
             listViewResults.View = View.Details;
+            listViewResults.FullRowSelect = true;
+            listViewResults.MultiSelect = false;
 
             loadTickets(tickets);
         }
@@ -38,9 +40,11 @@ namespace DemoApp
                 ListViewItem ticketItem = new ListViewItem($"{ticket.TicketId}");
                 ticketItem.SubItems.Add($"{ticket.User.Email}");
                 ticketItem.SubItems.Add($"{ticket.User.Firstname}");
-                ticketItem.SubItems.Add($"{ticket.Date}");
+                ticketItem.SubItems.Add($"{ticket.Date:dd-MM-yyyy}");
                 ticketItem.SubItems.Add($"{ticket.Priority}");
+                ticketItem.Tag = ticket;
 
+                
                 listViewResults.Items.Add(ticketItem);
             }
         }
@@ -49,10 +53,28 @@ namespace DemoApp
         {
             if (txtBoxFilter.Text.Length > 0)
             {
-                loadTickets(databases.getTicketsByEmail(txtBoxFilter.Text, tickets));
+                loadTickets(ticketsLogic.getTicketsByEmail(txtBoxFilter.Text, tickets));
             }
             else
-                loadTickets(databases.GetAllTickets());
+                loadTickets(ticketsLogic.GetAllTickets());
+        }
+
+        private void listViewResults_MouseClick(object sender, MouseEventArgs e)
+        {
+            ListViewItem selectedItem = listViewResults.SelectedItems[0];
+
+        }
+
+        private void btnCreateIncident_Click(object sender, EventArgs e)
+        {
+            AddTicketForm addTicketForm = new AddTicketForm();
+            addTicketForm.ShowDialog();
+        }
+
+        private void listViewResults_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            TicketView ticketView = new TicketView(listViewResults.SelectedItems[0].Tag as Ticket);
+            ticketView.ShowDialog();
         }
     }
 }

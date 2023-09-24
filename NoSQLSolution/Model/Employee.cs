@@ -29,5 +29,10 @@ namespace Model
             Password = password;
             UserType = userType;
         }
+
+        public override string ToString()
+        {
+            return this.Username.ToString();
+        }
     }
 }
