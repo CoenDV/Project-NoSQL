@@ -81,6 +81,7 @@ namespace DemoApp
 
         protected virtual void btnSubmit_Click(object sender, EventArgs e)
         {
+            // the description must not be empty before sending it to the database
             if (textBoxDescription.Text.Length <= 0)
                 MessageBox.Show("No valid description was given", "Error occured");
             else

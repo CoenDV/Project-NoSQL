@@ -51,6 +51,7 @@ namespace DemoApp
 
         private void txtBoxFilter_Leave(object sender, EventArgs e)
         {
+            // Only use filter if text is entered, otherwise just show everything
             if (txtBoxFilter.Text.Length > 0)
             {
                 loadTickets(ticketsLogic.getTicketsByEmail(txtBoxFilter.Text, tickets));
