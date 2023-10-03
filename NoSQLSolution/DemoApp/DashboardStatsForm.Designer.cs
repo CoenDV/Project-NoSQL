@@ -46,9 +46,10 @@
             // 
             this.lblSubTitle.AutoSize = true;
             this.lblSubTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lblSubTitle.Location = new System.Drawing.Point(387, 47);
+            this.lblSubTitle.Location = new System.Drawing.Point(516, 58);
+            this.lblSubTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSubTitle.Name = "lblSubTitle";
-            this.lblSubTitle.Size = new System.Drawing.Size(245, 20);
+            this.lblSubTitle.Size = new System.Drawing.Size(314, 25);
             this.lblSubTitle.TabIndex = 11;
             this.lblSubTitle.Text = "Licensed to: The Garden Group";
             // 
@@ -56,35 +57,40 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.25F);
-            this.lblTitle.Location = new System.Drawing.Point(497, 9);
+            this.lblTitle.Location = new System.Drawing.Point(663, 11);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(135, 38);
+            this.lblTitle.Size = new System.Drawing.Size(168, 47);
             this.lblTitle.TabIndex = 10;
             this.lblTitle.Text = "NoDesk";
             // 
             // btnUserManagement
             // 
-            this.btnUserManagement.Location = new System.Drawing.Point(430, 80);
+            this.btnUserManagement.Location = new System.Drawing.Point(573, 98);
+            this.btnUserManagement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUserManagement.Name = "btnUserManagement";
-            this.btnUserManagement.Size = new System.Drawing.Size(215, 30);
+            this.btnUserManagement.Size = new System.Drawing.Size(287, 37);
             this.btnUserManagement.TabIndex = 9;
             this.btnUserManagement.Text = "User Management";
             this.btnUserManagement.UseVisualStyleBackColor = true;
             // 
             // btnIncidentManagement
             // 
-            this.btnIncidentManagement.Location = new System.Drawing.Point(215, 80);
+            this.btnIncidentManagement.Location = new System.Drawing.Point(287, 98);
+            this.btnIncidentManagement.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIncidentManagement.Name = "btnIncidentManagement";
-            this.btnIncidentManagement.Size = new System.Drawing.Size(215, 30);
+            this.btnIncidentManagement.Size = new System.Drawing.Size(287, 37);
             this.btnIncidentManagement.TabIndex = 8;
             this.btnIncidentManagement.Text = "Incident Management";
             this.btnIncidentManagement.UseVisualStyleBackColor = true;
+            this.btnIncidentManagement.Click += new System.EventHandler(this.btnIncidentManagement_Click);
             // 
             // btnDashboard
             // 
-            this.btnDashboard.Location = new System.Drawing.Point(0, 80);
+            this.btnDashboard.Location = new System.Drawing.Point(0, 98);
+            this.btnDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(215, 30);
+            this.btnDashboard.Size = new System.Drawing.Size(287, 37);
             this.btnDashboard.TabIndex = 7;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = true;
@@ -93,8 +99,9 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(107, 98);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
@@ -102,17 +109,19 @@
             // 
             this.lblCurrentIncidents.AutoSize = true;
             this.lblCurrentIncidents.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.25F);
-            this.lblCurrentIncidents.Location = new System.Drawing.Point(20, 125);
+            this.lblCurrentIncidents.Location = new System.Drawing.Point(27, 154);
+            this.lblCurrentIncidents.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCurrentIncidents.Name = "lblCurrentIncidents";
-            this.lblCurrentIncidents.Size = new System.Drawing.Size(264, 38);
+            this.lblCurrentIncidents.Size = new System.Drawing.Size(334, 47);
             this.lblCurrentIncidents.TabIndex = 12;
             this.lblCurrentIncidents.Text = "Current incidents";
             // 
             // btnShowList
             // 
-            this.btnShowList.Location = new System.Drawing.Point(500, 125);
+            this.btnShowList.Location = new System.Drawing.Point(667, 154);
+            this.btnShowList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnShowList.Name = "btnShowList";
-            this.btnShowList.Size = new System.Drawing.Size(120, 38);
+            this.btnShowList.Size = new System.Drawing.Size(160, 47);
             this.btnShowList.TabIndex = 13;
             this.btnShowList.Text = "SHOW LIST";
             this.btnShowList.UseVisualStyleBackColor = true;
@@ -127,7 +136,8 @@
             this.circularProgressBar1.InnerColor = System.Drawing.Color.White;
             this.circularProgressBar1.InnerMargin = 2;
             this.circularProgressBar1.InnerWidth = -1;
-            this.circularProgressBar1.Location = new System.Drawing.Point(27, 180);
+            this.circularProgressBar1.Location = new System.Drawing.Point(36, 222);
+            this.circularProgressBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
             this.circularProgressBar1.Name = "circularProgressBar1";
             this.circularProgressBar1.OuterColor = System.Drawing.Color.Silver;
@@ -136,7 +146,7 @@
             this.circularProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.circularProgressBar1.ProgressWidth = 25;
             this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.circularProgressBar1.Size = new System.Drawing.Size(275, 275);
+            this.circularProgressBar1.Size = new System.Drawing.Size(367, 338);
             this.circularProgressBar1.StartAngle = 270;
             this.circularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
             this.circularProgressBar1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
@@ -159,7 +169,8 @@
             this.circularProgressBar2.InnerColor = System.Drawing.Color.White;
             this.circularProgressBar2.InnerMargin = 2;
             this.circularProgressBar2.InnerWidth = -1;
-            this.circularProgressBar2.Location = new System.Drawing.Point(345, 180);
+            this.circularProgressBar2.Location = new System.Drawing.Point(460, 222);
+            this.circularProgressBar2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.circularProgressBar2.MarqueeAnimationSpeed = 2000;
             this.circularProgressBar2.Name = "circularProgressBar2";
             this.circularProgressBar2.OuterColor = System.Drawing.Color.Silver;
@@ -168,7 +179,7 @@
             this.circularProgressBar2.ProgressColor = System.Drawing.Color.Red;
             this.circularProgressBar2.ProgressWidth = 25;
             this.circularProgressBar2.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.circularProgressBar2.Size = new System.Drawing.Size(275, 275);
+            this.circularProgressBar2.Size = new System.Drawing.Size(367, 338);
             this.circularProgressBar2.StartAngle = 270;
             this.circularProgressBar2.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
             this.circularProgressBar2.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
@@ -183,10 +194,10 @@
             // 
             // DashboardStatsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(644, 811);
+            this.ClientSize = new System.Drawing.Size(859, 998);
             this.Controls.Add(this.circularProgressBar2);
             this.Controls.Add(this.circularProgressBar1);
             this.Controls.Add(this.btnShowList);
@@ -197,6 +208,7 @@
             this.Controls.Add(this.btnIncidentManagement);
             this.Controls.Add(this.btnDashboard);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DashboardStatsForm";
             this.Text = "DashboardStatsForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

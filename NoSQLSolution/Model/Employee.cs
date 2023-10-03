@@ -10,13 +10,13 @@ namespace Model
     public class Employee
     {
         public ObjectId _id { get; set; }
-        public int Id;
-        public string Email;
-        public string Firstname;
-        public string Lastname;
-        public int NrOfTickts;
-        public string Username;
-        public string Password;
-        public UserType UserType;
+        public int EmployeeId { get; set; }
+        public string Email { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public int UserType;
     }
+
 }

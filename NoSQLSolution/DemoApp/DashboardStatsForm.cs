@@ -16,5 +16,11 @@ namespace DemoApp
         {
             InitializeComponent();
         }
+
+        private void btnIncidentManagement_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+        }
     }
 }

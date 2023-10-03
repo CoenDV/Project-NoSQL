@@ -6,12 +6,19 @@ namespace Logic
 {
     public class Databases
     {
-        private DAO dao;
+        private EmployeeDao employeeDao;
         public Databases()
         {
-            dao = new DAO();
+            employeeDao = new EmployeeDao();
         }
-
+        public List<Employee> GetAllEmployees()
+        {
+            return employeeDao.GetAllUsers();
+        }
+        public void ChangePassword(Employee employee, string password)
+        {
+            employeeDao.updatePassword(employee, password);
+        }
         
     }
 }
