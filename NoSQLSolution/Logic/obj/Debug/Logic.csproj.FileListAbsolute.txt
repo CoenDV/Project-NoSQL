@@ -60,3 +60,34 @@ C:\Users\coen\OneDrive - Hogeschool Inholland\Laptop\Documenten\School\Project N
 C:\Users\coen\OneDrive - Hogeschool Inholland\Laptop\Documenten\School\Project NoSQL\NoSQLSolution\Logic\obj\Debug\Logic.csproj.CopyComplete
 C:\Users\coen\OneDrive - Hogeschool Inholland\Laptop\Documenten\School\Project NoSQL\NoSQLSolution\Logic\obj\Debug\Logic.dll
 C:\Users\coen\OneDrive - Hogeschool Inholland\Laptop\Documenten\School\Project NoSQL\NoSQLSolution\Logic\obj\Debug\Logic.pdb
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\snappy32.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\snappy64.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\libzstd.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\mongocrypt.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\Logic.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\Logic.pdb
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\DAL.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\Model.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\MongoDB.Driver.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\MongoDB.Bson.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\MongoDB.Libmongocrypt.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\DnsClient.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\System.ValueTuple.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\SharpCompress.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\System.Buffers.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\DAL.pdb
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\Model.pdb
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\MongoDB.Driver.xml
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\MongoDB.Bson.xml
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\DnsClient.xml
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\System.ValueTuple.xml
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\System.Buffers.xml
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\obj\Debug\Logic.csproj.AssemblyReference.cache
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\obj\Debug\Logic.csproj.CoreCompileInputs.cache
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\obj\Debug\Logic.csproj.CopyComplete
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\obj\Debug\Logic.dll
+C:\Users\shrim\Source\Repos\Project-NoSQL_3\NoSQLSolution\Logic\obj\Debug\Logic.pdb
