@@ -44,17 +44,24 @@ namespace DemoApp
 
         private void loadTickets(List<Ticket> tickets)
         {
-            listViewResults.Items.Clear(); // making sure there is no duplicate date in the listview
-
-            foreach (Ticket ticket in tickets)
+            try
             {
-                ListViewItem ticketItem = new ListViewItem($"{ticket.TicketId}");
-                ticketItem.SubItems.Add($"{ticket.Email}");
-                ticketItem.SubItems.Add($"{ticket.Date:dd-MM-yyyy}");
-                ticketItem.SubItems.Add($"{ticket.Priority}");
-                ticketItem.Tag = ticket;
+                listViewResults.Items.Clear(); // making sure there is no duplicate date in the listview
 
-                listViewResults.Items.Add(ticketItem);
+                foreach (Ticket ticket in tickets)
+                {
+                    ListViewItem ticketItem = new ListViewItem($"{ticket.TicketId}");
+                    ticketItem.SubItems.Add($"{ticket.Email}");
+                    ticketItem.SubItems.Add($"{ticket.Date:dd-MM-yyyy}");
+                    ticketItem.SubItems.Add($"{ticket.Priority}");
+                    ticketItem.Tag = ticket;
+
+                    listViewResults.Items.Add(ticketItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error ocurred");
             }
         }
 
@@ -72,20 +79,33 @@ namespace DemoApp
         private void listViewResults_MouseClick(object sender, MouseEventArgs e)
         {
             ListViewItem selectedItem = listViewResults.SelectedItems[0];
-
         }
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
         {
-            AddTicketForm addTicketForm = new AddTicketForm(employee);
-            addTicketForm.ShowDialog();
-            loadTickets(ticketsLogic.GetAllTickets());
+            try
+            {
+                AddTicketForm addTicketForm = new AddTicketForm(employee);
+                addTicketForm.ShowDialog();
+                loadTickets(ticketsLogic.GetAllTickets());
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error ocurred");
+            }
         }
 
         private void listViewResults_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            TicketView ticketView = new TicketView(employee, listViewResults.SelectedItems[0].Tag as Ticket);
-            ticketView.ShowDialog();
+            try
+            {
+                TicketView ticketView = new TicketView(employee, listViewResults.SelectedItems[0].Tag as Ticket);
+                ticketView.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error ocurred");
+            }
         }
     }
 }
