@@ -11,35 +11,40 @@ namespace DAL
 {
     public class TicketsDao : DAO
     {
+        private IMongoCollection<Ticket> ticketCollection;
+        public TicketsDao() {
+            ticketCollection = database.GetCollection<Ticket>("Tickets");
+        }
+
         public List<Ticket> GetAllTickets()
         {
             var filter = Builders<Ticket>.Filter.Gt("Priority", TicketPriority.Closed); // Only check for tickets that are relevant
-            return database.GetCollection<Ticket>("Tickets").Find(filter).ToList();
+            return ticketCollection.Find(filter).ToList();
         }
 
         public List<Ticket> getTicketsByEmail(string Email)
         {
-            var filter = Builders<Ticket>.Filter.Eq("User", Email);
-            return database.GetCollection<Ticket>("Tickets").Find(filter).ToList();
+            var filter = Builders<Ticket>.Filter.Eq("Email", Email);
+            return ticketCollection.Find(filter).ToList();
         }
 
         public void insertTicket(Ticket ticket)
         {
             ticket.TicketId = (int)database.GetCollection<Ticket>("Tickets").CountDocuments(new BsonDocument());
-            database.GetCollection<Ticket>("Tickets").InsertOne(ticket);
+            ticketCollection.InsertOne(ticket);
         }
 
         public void updateTicket(Ticket ticket)
         {
             var filter = Builders<Ticket>.Filter.Eq("TicketId", ticket.TicketId);
             var update = Builders<Ticket>.Update
-                .Set("User", ticket.User)
+                .Set("Email", ticket.Email)
                 .Set("Date", ticket.Date)
                 .Set("Incident", ticket.Incident)
                 .Set("Priority", ticket.Priority)
                 .Set("Deadline", ticket.Deadline)
                 .Set("Description", ticket.Description);
-            database.GetCollection<Ticket>("Tickets").UpdateOne(filter, update);
+            ticketCollection.UpdateOne(filter, update);
         }
     }
 }

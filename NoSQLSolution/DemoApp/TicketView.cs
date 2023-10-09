@@ -16,13 +16,14 @@ namespace DemoApp
     public partial class TicketView : AddTicketForm
     {
         private Ticket ticket;
-        public TicketView(Ticket ticket)
+
+        public TicketView(Employee employee, Ticket ticket) : base(employee)
         {
             InitializeComponent();
 
             this.ticket = ticket;
             lblCreateticket.Text = $"Details of ticket {ticket.TicketId}";
-            btnSubmit.Text = "Update ticket";
+            btnSubmit.Text = "Update ticket"; // overrides text from base form
             dateTimePickerTicket.MaxDate = DateTime.Now;
             ticketsLogic = new TicketsLogic();
 
@@ -38,7 +39,7 @@ namespace DemoApp
         {
             dateTimePickerTicket.Value = ticket.Date;
             comboBoxType.Text = ticket.Incident.ToString();
-            comboBoxUser.Text = ticket.User.Username.ToString();
+            comboBoxUser.Text = ticket.Email;
             comboBoxPriority.Text = ticket.Priority.ToString();
             comboBoxDeadline.Text = ticket.Deadline.ToString();
             textBoxDescription.Text = ticket.Description;
@@ -46,8 +47,9 @@ namespace DemoApp
 
         protected override void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (textBoxDescription.Text.Length <= 0)
-                MessageBox.Show("No valid description was given", "Error occured");
+            // fields must not be empty before sending object to database
+            if (comboBoxType.Text.Length <= 0 || comboBoxPriority.Text.Length <= 0 || comboBoxDeadline.Text.Length <= 0 || textBoxDescription.Text.Length <= 0)
+                MessageBox.Show("Some fields have not been filled properly", "Error occured");
             else
             {
                 DialogResult dr = MessageBox.Show($"Are you sure you want to update ticket #{ticket.TicketId}",
@@ -55,9 +57,10 @@ namespace DemoApp
                 switch (dr)
                 {
                     case DialogResult.Yes:
-                        ticketsLogic.updateTicket(new Ticket(MongoDB.Bson.ObjectId.Empty, ticket.TicketId, (Employee)comboBoxUser.SelectedItem, dateTimePickerTicket.Value, (TypeOfIncident)Enum.Parse(typeof(TypeOfIncident), comboBoxType.Text), (TicketPriority)Enum.Parse(typeof(TicketPriority), comboBoxPriority.Text), (Deadlines)Enum.Parse(typeof(Deadlines), comboBoxDeadline.Text), textBoxDescription.Text));
+                        Employee employee = (Employee)comboBoxUser.SelectedItem;
+                        ticketsLogic.updateTicket(new Ticket(MongoDB.Bson.ObjectId.Empty, ticket.TicketId, employee._id, employee.Email, dateTimePickerTicket.Value, (TypeOfIncident)Enum.Parse(typeof(TypeOfIncident), comboBoxType.Text), (TicketPriority)Enum.Parse(typeof(TicketPriority), comboBoxPriority.Text), (Deadlines)Enum.Parse(typeof(Deadlines), comboBoxDeadline.Text), textBoxDescription.Text));
                         this.Close();
-                        MessageBox.Show("ticket is added", "");
+                        MessageBox.Show("ticket is updated", "");
                         break;
                     case DialogResult.No:
                         break;

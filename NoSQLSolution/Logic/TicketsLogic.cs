@@ -22,17 +22,9 @@ namespace Logic
             return ticketsDao.GetAllTickets();
         }
 
-        public List<Ticket> getTicketsByEmail(string Email, List<Ticket> tickets)
+        public List<Ticket> getTicketsByEmail(string Email)
         {
-            List<Ticket> ticketsByEmail = new List<Ticket>();
-
-            foreach (Ticket ticket in tickets)
-            {
-                if (ticket.User.Email == Email)
-                    ticketsByEmail.Add(ticket);
-            }
-
-            return ticketsByEmail;
+            return ticketsDao.getTicketsByEmail(Email);
         }
 
         public void insertTicket(Ticket ticket)

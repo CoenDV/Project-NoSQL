@@ -39,10 +39,10 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
-            this.comboBoxUser = new System.Windows.Forms.ComboBox();
             this.comboBoxPriority = new System.Windows.Forms.ComboBox();
             this.comboBoxDeadline = new System.Windows.Forms.ComboBox();
             this.dateTimePickerTicket = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxUser = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblCreateticket
@@ -145,14 +145,6 @@
             this.comboBoxType.Size = new System.Drawing.Size(250, 21);
             this.comboBoxType.TabIndex = 13;
             // 
-            // comboBoxUser
-            // 
-            this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Location = new System.Drawing.Point(300, 170);
-            this.comboBoxUser.Name = "comboBoxUser";
-            this.comboBoxUser.Size = new System.Drawing.Size(250, 21);
-            this.comboBoxUser.TabIndex = 14;
-            // 
             // comboBoxPriority
             // 
             this.comboBoxPriority.FormattingEnabled = true;
@@ -177,16 +169,24 @@
             this.dateTimePickerTicket.TabIndex = 17;
             this.dateTimePickerTicket.Value = new System.DateTime(2023, 9, 24, 0, 0, 0, 0);
             // 
+            // comboBoxUser
+            // 
+            this.comboBoxUser.FormattingEnabled = true;
+            this.comboBoxUser.Location = new System.Drawing.Point(300, 170);
+            this.comboBoxUser.Name = "comboBoxUser";
+            this.comboBoxUser.Size = new System.Drawing.Size(250, 21);
+            this.comboBoxUser.TabIndex = 18;
+            // 
             // AddTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(734, 461);
+            this.Controls.Add(this.comboBoxUser);
             this.Controls.Add(this.dateTimePickerTicket);
             this.Controls.Add(this.comboBoxDeadline);
             this.Controls.Add(this.comboBoxPriority);
-            this.Controls.Add(this.comboBoxUser);
             this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnCancel);
@@ -219,11 +219,11 @@
         private System.Windows.Forms.Button btnCancel;
         protected System.Windows.Forms.DateTimePicker dateTimePickerTicket;
         protected System.Windows.Forms.ComboBox comboBoxType;
-        protected System.Windows.Forms.ComboBox comboBoxUser;
         protected System.Windows.Forms.ComboBox comboBoxPriority;
         protected System.Windows.Forms.ComboBox comboBoxDeadline;
         protected System.Windows.Forms.TextBox textBoxDescription;
         protected System.Windows.Forms.Label lblCreateticket;
         protected System.Windows.Forms.Button btnSubmit;
+        protected System.Windows.Forms.ComboBox comboBoxUser;
     }
 }

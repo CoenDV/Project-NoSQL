@@ -41,10 +41,9 @@
             this.listViewResults = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.User = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblFilter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,7 +137,6 @@
             this.listViewResults.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.Email,
-            this.User,
             this.Date,
             this.Status});
             this.listViewResults.HideSelection = false;
@@ -158,31 +156,26 @@
             // Email
             // 
             this.Email.Text = "Email";
-            this.Email.Width = 200;
-            // 
-            // User
-            // 
-            this.User.Text = "User";
-            this.User.Width = 100;
+            this.Email.Width = 250;
             // 
             // Date
             // 
             this.Date.Text = "Date";
-            this.Date.Width = 100;
+            this.Date.Width = 150;
             // 
             // Status
             // 
             this.Status.Text = "Status";
             this.Status.Width = 130;
             // 
-            // label1
+            // lblFilter
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 173);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Filter by E-mail:";
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Location = new System.Drawing.Point(27, 173);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(77, 13);
+            this.lblFilter.TabIndex = 10;
+            this.lblFilter.Text = "Filter by E-mail:";
             // 
             // TicketOverviewForm
             // 
@@ -190,7 +183,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(644, 811);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.listViewResults);
             this.Controls.Add(this.btnCreateIncident);
             this.Controls.Add(this.txtBoxFilter);
@@ -225,9 +218,8 @@
         private System.Windows.Forms.ListView listViewResults;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Email;
-        private System.Windows.Forms.ColumnHeader User;
         private System.Windows.Forms.ColumnHeader Date;
         private System.Windows.Forms.ColumnHeader Status;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblFilter;
     }
 }

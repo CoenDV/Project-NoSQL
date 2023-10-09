@@ -9,24 +9,22 @@ namespace Model
 {
     public class Ticket
     {
-        /*
-         * The employees are embedded so that database lookups are limited to getting tickets and filtering tickets. 
-         * Also only tickets that are not yet closed can be displayed so the amount of tickets to be loaded is limited.
-         */
-        public ObjectId _id { get; set; }
+        public ObjectId _id { get; }
         public int TicketId;
-        public Employee User;
+        public ObjectId EmployeeId;
+        public string Email;
         public DateTime Date;
         public TypeOfIncident Incident;
         public TicketPriority Priority;
         public Deadlines Deadline;
         public string Description;
 
-        public Ticket(ObjectId id, int ticketId, Employee user, DateTime date, TypeOfIncident typeOfIncident,TicketPriority priority, Deadlines deadline, string description)
+        public Ticket(ObjectId id, int ticketId, ObjectId employeeId, string email, DateTime date, TypeOfIncident typeOfIncident,TicketPriority priority, Deadlines deadline, string description)
         {
             _id = id;
             TicketId = ticketId;
-            User = user;
+            EmployeeId = employeeId;
+            Email = email;
             Date = date;
             Incident = typeOfIncident;
             Priority = priority;
