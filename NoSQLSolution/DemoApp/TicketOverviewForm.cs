@@ -16,44 +16,54 @@ namespace DemoApp
     public partial class TicketOverviewForm : Form
     {
         private TicketsLogic ticketsLogic;
-        private List<Ticket> tickets;
+        private Employee employee;
 
-        public TicketOverviewForm()
+        public TicketOverviewForm(Employee employee)
         {
             InitializeComponent();
 
+            this.employee = employee;
             ticketsLogic = new TicketsLogic();
-            tickets = ticketsLogic.GetAllTickets();
+
+            // set settings for the listview
             listViewResults.View = View.Details;
             listViewResults.FullRowSelect = true;
             listViewResults.MultiSelect = false;
-
-            loadTickets(tickets);
+                
+            // checks usertype and only shows allowed tickets
+            // for now only servicedesk users can see all tickets and all the others can only view own tickets
+            if(employee.UserType == UserType.ServiceDesk)
+                loadTickets(ticketsLogic.GetAllTickets());
+            else
+            {
+                loadTickets(ticketsLogic.getTicketsByEmail(employee.Email));
+                lblFilter.Visible = false;
+                txtBoxFilter.Visible = false;
+            }
         }
 
         private void loadTickets(List<Ticket> tickets)
         {
-            listViewResults.Items.Clear();
+            listViewResults.Items.Clear(); // making sure there is no duplicate date in the listview
 
             foreach (Ticket ticket in tickets)
             {
                 ListViewItem ticketItem = new ListViewItem($"{ticket.TicketId}");
-                ticketItem.SubItems.Add($"{ticket.User.Email}");
-                ticketItem.SubItems.Add($"{ticket.User.Firstname}");
+                ticketItem.SubItems.Add($"{ticket.Email}");
                 ticketItem.SubItems.Add($"{ticket.Date:dd-MM-yyyy}");
                 ticketItem.SubItems.Add($"{ticket.Priority}");
                 ticketItem.Tag = ticket;
 
-                
                 listViewResults.Items.Add(ticketItem);
             }
         }
 
         private void txtBoxFilter_Leave(object sender, EventArgs e)
         {
+            // Only use filter if text is entered, otherwise just show everything
             if (txtBoxFilter.Text.Length > 0)
             {
-                loadTickets(ticketsLogic.getTicketsByEmail(txtBoxFilter.Text, tickets));
+                loadTickets(ticketsLogic.getTicketsByEmail(txtBoxFilter.Text));
             }
             else
                 loadTickets(ticketsLogic.GetAllTickets());
@@ -67,13 +77,14 @@ namespace DemoApp
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
         {
-            AddTicketForm addTicketForm = new AddTicketForm();
+            AddTicketForm addTicketForm = new AddTicketForm(employee);
             addTicketForm.ShowDialog();
+            loadTickets(ticketsLogic.GetAllTickets());
         }
 
         private void listViewResults_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            TicketView ticketView = new TicketView(listViewResults.SelectedItems[0].Tag as Ticket);
+            TicketView ticketView = new TicketView(employee, listViewResults.SelectedItems[0].Tag as Ticket);
             ticketView.ShowDialog();
         }
     }

@@ -15,11 +15,20 @@ namespace DemoApp
 {
     public partial class AddTicketForm : Form
     {
+        private Employee employee;
+
         protected TicketsLogic ticketsLogic;
+
+        // a default contructor is needed for inherited form TicketView
         public AddTicketForm()
         {
             InitializeComponent();
+        }
+        public AddTicketForm(Employee employee)
+        {
+            InitializeComponent();
 
+            this.employee = employee;
             dateTimePickerTicket.MaxDate = DateTime.Now;
             ticketsLogic = new TicketsLogic();
 
@@ -34,21 +43,15 @@ namespace DemoApp
             comboBoxType.Items.Clear();
             foreach (TypeOfIncident incident in Enum.GetValues(typeof(TypeOfIncident)))
             {
-                comboBoxUser.Tag = incident;
+                comboBoxType.Tag = incident;
                 comboBoxType.Items.Add(incident);
             }
         }
 
         protected void loadComboBoxUsers()
         {
-            comboBoxUser.Items.Clear();
-            EmployeeLogic employeeLogic = new EmployeeLogic();
-            List<Employee> employees = employeeLogic.GetAllRegularUsers();
-            foreach (Employee employee in employees)
-            {
-                comboBoxUser.Tag = employee;
-                comboBoxUser.Items.Add(employee);
-            }
+            comboBoxUser.Text = employee.Email;
+            comboBoxUser.Enabled = false;
         }
 
         protected void loadComboBoxPriority()
@@ -81,11 +84,12 @@ namespace DemoApp
 
         protected virtual void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (textBoxDescription.Text.Length <= 0)
-                MessageBox.Show("No valid description was given", "Error occured");
+            // fields must not be empty before sending object to database
+            if (comboBoxType.Text.Length <= 0 || comboBoxPriority.Text.Length <= 0 || comboBoxDeadline.Text.Length <= 0 || textBoxDescription.Text.Length <= 0)
+                MessageBox.Show("Some fields have not been filled properly", "Error occured");
             else
             {
-                ticketsLogic.insertTicket(new Ticket(MongoDB.Bson.ObjectId.Empty, -1, (Employee)comboBoxUser.SelectedItem, dateTimePickerTicket.Value, (TypeOfIncident)Enum.Parse(typeof(TypeOfIncident), comboBoxType.Text), (TicketPriority)Enum.Parse(typeof(TicketPriority), comboBoxPriority.Text), (Deadlines)Enum.Parse(typeof(Deadlines), comboBoxDeadline.Text), textBoxDescription.Text));
+                ticketsLogic.insertTicket(new Ticket(MongoDB.Bson.ObjectId.Empty, -1, employee._id, employee.Email, dateTimePickerTicket.Value, (TypeOfIncident)Enum.Parse(typeof(TypeOfIncident), comboBoxType.Text), (TicketPriority)Enum.Parse(typeof(TicketPriority), comboBoxPriority.Text), (Deadlines)Enum.Parse(typeof(Deadlines), comboBoxDeadline.Text), textBoxDescription.Text));
                 this.Close();
                 MessageBox.Show("ticket is added", "");
             }
