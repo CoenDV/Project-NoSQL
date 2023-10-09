@@ -40,40 +40,67 @@ namespace DemoApp
 
         protected void loadComboBoxType()
         {
-            comboBoxType.Items.Clear();
-            foreach (TypeOfIncident incident in Enum.GetValues(typeof(TypeOfIncident)))
+            try
             {
-                comboBoxType.Tag = incident;
-                comboBoxType.Items.Add(incident);
+                comboBoxType.Items.Clear();
+                foreach (TypeOfIncident incident in Enum.GetValues(typeof(TypeOfIncident)))
+                {
+                    comboBoxType.Tag = incident;
+                    comboBoxType.Items.Add(incident);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error ocurred");
             }
         }
 
         protected void loadComboBoxUsers()
         {
-            comboBoxUser.Text = employee.Email;
-            comboBoxUser.Enabled = false;
+            try
+            {
+                comboBoxUser.Text = employee.Email;
+                comboBoxUser.Enabled = false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error ocurred");
+            }
         }
 
         protected void loadComboBoxPriority()
         {
-            comboBoxPriority.Items.Clear();
-            foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
+            try
             {
-                if (priority != TicketPriority.Closed)
+                comboBoxPriority.Items.Clear();
+                foreach (TicketPriority priority in Enum.GetValues(typeof(TicketPriority)))
                 {
-                    comboBoxPriority.Tag = priority;
-                    comboBoxPriority.Items.Add(priority);
+                    if (priority != TicketPriority.Closed)
+                    {
+                        comboBoxPriority.Tag = priority;
+                        comboBoxPriority.Items.Add(priority);
+                    }
                 }
+            }
+            catch(Exception e) {
+                MessageBox.Show(e.Message, "Error ocurred");
             }
         }
 
         protected void loadComboBoxDeadline()
         {
-            comboBoxDeadline.Items.Clear();
-            foreach (Deadlines deadline in Enum.GetValues(typeof(Deadlines)))
+            try
             {
-                comboBoxDeadline.Tag = deadline;
-                comboBoxDeadline.Items.Add(deadline);
+                comboBoxDeadline.Items.Clear();
+                foreach (Deadlines deadline in Enum.GetValues(typeof(Deadlines)))
+                {
+                    comboBoxDeadline.Tag = deadline;
+                    comboBoxDeadline.Items.Add(deadline);
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Error ocurred");
             }
         }
 

@@ -37,12 +37,19 @@ namespace DemoApp
 
         private void setControls()
         {
-            dateTimePickerTicket.Value = ticket.Date;
-            comboBoxType.Text = ticket.Incident.ToString();
-            comboBoxUser.Text = ticket.Email;
-            comboBoxPriority.Text = ticket.Priority.ToString();
-            comboBoxDeadline.Text = ticket.Deadline.ToString();
-            textBoxDescription.Text = ticket.Description;
+            try
+            {
+                dateTimePickerTicket.Value = ticket.Date;
+                comboBoxType.Text = ticket.Incident.ToString();
+                comboBoxUser.Text = ticket.Email;
+                comboBoxPriority.Text = ticket.Priority.ToString();
+                comboBoxDeadline.Text = ticket.Deadline.ToString();
+                textBoxDescription.Text = ticket.Description;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error ocurred");
+            }
         }
 
         protected override void btnSubmit_Click(object sender, EventArgs e)
