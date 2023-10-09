@@ -396,5 +396,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-*.vsidx
-NoSQLSolution/.vs/NoSQLSolution/v17/.suo
