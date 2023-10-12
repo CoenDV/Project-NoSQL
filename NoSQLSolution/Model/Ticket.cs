@@ -9,7 +9,7 @@ namespace Model
 {
     public class Ticket
     {
-        public ObjectId _id { get; }
+        public ObjectId _id { get; set; }
         public int TicketId;
         public ObjectId EmployeeId;
         public string Email;

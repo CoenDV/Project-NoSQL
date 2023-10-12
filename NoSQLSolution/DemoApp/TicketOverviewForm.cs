@@ -29,25 +29,24 @@ namespace DemoApp
             listViewResults.View = View.Details;
             listViewResults.FullRowSelect = true;
             listViewResults.MultiSelect = false;
-                
-            // checks usertype and only shows allowed tickets
-            // for now only servicedesk users can see all tickets and all the others can only view own tickets
-            if(employee.UserType == UserType.ServiceDesk)
-                loadTickets(ticketsLogic.GetAllTickets());
-            else
+
+            loadTickets();
+            // only show filter if user is a servicedesk employee, others can only see their own tickets
+            if (employee.UserType == UserType.ServiceDesk)
             {
-                loadTickets(ticketsLogic.getTicketsByEmail(employee.Email));
                 lblFilter.Visible = false;
                 txtBoxFilter.Visible = false;
             }
         }
 
-        private void loadTickets(List<Ticket> tickets)
+        private void loadTickets()
         {
+            List<Ticket> tickets = new List<Ticket>();
             try
             {
-                listViewResults.Items.Clear(); // making sure there is no duplicate date in the listview
+                listViewResults.Items.Clear(); // making sure there is no duplicate items in the listview
 
+                tickets = ticketsLogic.loadTickets(employee);
                 foreach (Ticket ticket in tickets)
                 {
                     ListViewItem ticketItem = new ListViewItem($"{ticket.TicketId}");
@@ -67,13 +66,9 @@ namespace DemoApp
 
         private void txtBoxFilter_Leave(object sender, EventArgs e)
         {
-            // Only use filter if text is entered, otherwise just show everything
+            // Only use filter if text is entered
             if (txtBoxFilter.Text.Length > 0)
-            {
-                loadTickets(ticketsLogic.getTicketsByEmail(txtBoxFilter.Text));
-            }
-            else
-                loadTickets(ticketsLogic.GetAllTickets());
+                loadTickets();
         }
 
         private void listViewResults_MouseClick(object sender, MouseEventArgs e)
@@ -87,9 +82,9 @@ namespace DemoApp
             {
                 AddTicketForm addTicketForm = new AddTicketForm(employee);
                 addTicketForm.ShowDialog();
-                loadTickets(ticketsLogic.GetAllTickets());
+                loadTickets();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error ocurred");
             }
@@ -101,6 +96,7 @@ namespace DemoApp
             {
                 TicketView ticketView = new TicketView(employee, listViewResults.SelectedItems[0].Tag as Ticket);
                 ticketView.ShowDialog();
+                loadTickets();
             }
             catch (Exception ex)
             {
