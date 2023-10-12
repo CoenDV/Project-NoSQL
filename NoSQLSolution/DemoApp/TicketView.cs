@@ -64,7 +64,6 @@ namespace DemoApp
                 switch (dr)
                 {
                     case DialogResult.Yes:
-                        Employee employee = (Employee)comboBoxUser.SelectedItem;
                         ticketsLogic.updateTicket(new Ticket(MongoDB.Bson.ObjectId.Empty, ticket.TicketId, employee._id, employee.Email, dateTimePickerTicket.Value, (TypeOfIncident)Enum.Parse(typeof(TypeOfIncident), comboBoxType.Text), (TicketPriority)Enum.Parse(typeof(TicketPriority), comboBoxPriority.Text), (Deadlines)Enum.Parse(typeof(Deadlines), comboBoxDeadline.Text), textBoxDescription.Text));
                         this.Close();
                         MessageBox.Show("ticket is updated", "");

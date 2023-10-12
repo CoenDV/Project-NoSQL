@@ -15,7 +15,7 @@ namespace DemoApp
 {
     public partial class AddTicketForm : Form
     {
-        private Employee employee;
+        protected Employee employee; // protected so it can be used in inherited form TicketView
 
         protected TicketsLogic ticketsLogic;
 
