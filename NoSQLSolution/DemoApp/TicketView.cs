@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 namespace DemoApp
 {
+    // classes and methods added by Coen de Vries
     public partial class TicketView : AddTicketForm
     {
         private Ticket ticket;
@@ -59,9 +60,8 @@ namespace DemoApp
                 MessageBox.Show("Some fields have not been filled properly", "Error occured");
             else
             {
-                DialogResult dr = MessageBox.Show($"Are you sure you want to update ticket #{ticket.TicketId}",
-                      "Warning", MessageBoxButtons.YesNo);
-                switch (dr)
+                DialogResult dialogResult = MessageBox.Show($"Are you sure you want to update ticket #{ticket.TicketId}", "Warning", MessageBoxButtons.YesNo);
+                switch (dialogResult)
                 {
                     case DialogResult.Yes:
                         ticketsLogic.updateTicket(new Ticket(MongoDB.Bson.ObjectId.Empty, ticket.TicketId, employee._id, employee.Email, dateTimePickerTicket.Value, (TypeOfIncident)Enum.Parse(typeof(TypeOfIncident), comboBoxType.Text), (TicketPriority)Enum.Parse(typeof(TicketPriority), comboBoxPriority.Text), (Deadlines)Enum.Parse(typeof(Deadlines), comboBoxDeadline.Text), textBoxDescription.Text));
@@ -71,6 +71,21 @@ namespace DemoApp
                     case DialogResult.No:
                         break;
                 }
+            }
+        }
+
+        private void btnDeleteTicket_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show($"Are you sure you want to delete ticket #{ticket.TicketId}", "Warning", MessageBoxButtons.YesNo);
+            switch (dialogResult)
+            {
+                case DialogResult.Yes:
+                    ticketsLogic.deleteTicket(ticket);
+                    this.Close();
+                    MessageBox.Show("ticket is deleted", "");
+                    break;
+                case DialogResult.No:
+                    break;
             }
         }
     }

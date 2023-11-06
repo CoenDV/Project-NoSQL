@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 namespace DemoApp
 {
+    // classes and methods added by Coen de Vries
     public partial class AddTicketForm : Form
     {
         protected Employee employee; // protected so it can be used in inherited form TicketView
@@ -60,7 +61,18 @@ namespace DemoApp
             try
             {
                 comboBoxUser.Text = employee.Email;
-                comboBoxUser.Enabled = false;
+                if(employee.UserType != UserType.ServiceDesk)
+                    comboBoxUser.Enabled = false;
+                else
+                {
+                    EmployeeLogic employeeLogic = new EmployeeLogic();
+                    List<Employee> employees = employeeLogic.GetAllRegularUsers();
+                    foreach (Employee employee in employees)
+                    {
+                        comboBoxUser.Tag = employee;
+                        comboBoxUser.Items.Add(employee.Email);
+                    }
+                }
             }
             catch (Exception e)
             {

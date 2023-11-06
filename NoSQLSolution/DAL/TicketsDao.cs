@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace DAL
 {
+    // classes and methods added by Coen de Vries
     public class TicketsDao : DAO
     {
         private IMongoCollection<Ticket> ticketCollection;
@@ -48,6 +49,12 @@ namespace DAL
                     .Set("Description", ticket.Description);
             if (!ticketCollection.UpdateOne(filter, update).IsAcknowledged)
                 throw new Exception("Ticket could not be updated");
+        }
+
+        public void deleteTicket(Ticket ticket)
+        {
+            FilterDefinition<Ticket> filter = Builders<Ticket>.Filter.Eq("_id", ticket._id);
+            ticketCollection.DeleteOne(filter);
         }
     }
 }
