@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DemoApp
 {
+    // classes and methods added by Coen de Vries
     public partial class TicketOverviewForm : Form
     {
         private TicketsLogic ticketsLogic;

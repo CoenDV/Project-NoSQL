@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
+    // classes and methods added by Coen de Vries
     public class TicketsLogic
     {
         private TicketsDao ticketsDao;
@@ -43,6 +44,11 @@ namespace Logic
         public void updateTicket(Ticket ticket)
         {
             ticketsDao.updateTicket(ticket);
+        }
+
+        public void deleteTicket(Ticket ticket)
+        {
+            ticketsDao.deleteTicket(ticket);
         }
     }
 }

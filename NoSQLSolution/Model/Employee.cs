@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    // classes and methods added by Coen de Vries
     public class Employee
     {
         public ObjectId _id { get; set; }
