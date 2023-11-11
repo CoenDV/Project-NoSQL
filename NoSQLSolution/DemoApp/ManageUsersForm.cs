@@ -15,7 +15,7 @@ namespace DemoApp
     public partial class ManageUsersForm : Form
     {
         private EmployeeLogic employeeLogic;
-        private Employee currentUser; // Current logged-in user
+        private Employee currentUser; 
 
 
         public ManageUsersForm()
