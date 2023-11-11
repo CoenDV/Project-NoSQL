@@ -4,36 +4,32 @@ using Model;
 using Logic;
 using System.IO;
 
-
-
 namespace DemoApp
 {
     public partial class AddUserForm : Form
     {
         private EmployeeLogic employeeLogic;
         private ManageUsersForm manageUsersForm;
-
-        public AddUserForm(ManageUsersForm umForm)
+        public AddUserForm(ManageUsersForm userManagementForm)
         {
             InitializeComponent();
-            this.manageUsersForm = umForm;
+            this.manageUsersForm = userManagementForm;
             employeeLogic = new EmployeeLogic();
             cbUserType.DataSource = Enum.GetValues(typeof(UserType));
             cbLocationBranch.DataSource = Enum.GetValues(typeof(LocationBranch));
         }
         public void btnSubmit_Click(object sender, EventArgs e)
         {
+            string password = GenerateRandomPassword();
+
             if (string.IsNullOrWhiteSpace(txtboxFirstName.Text) ||
                 string.IsNullOrWhiteSpace(txtboxLastName.Text) ||
                 string.IsNullOrWhiteSpace(txtboxEmail.Text) ||
                 string.IsNullOrWhiteSpace(txtboxPhoneNumber.Text))
             {
-                MessageBox.Show("All fields are required. Please fill in all fields.", "Input Validation Failed");
-                return; 
-            }
-
-            string password = GenerateRandomPassword();
-
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            } 
             Employee newEmployee = new Employee
             {
                 Firstname = txtboxFirstName.Text.Trim(),
@@ -58,10 +54,9 @@ namespace DemoApp
                 MessageBox.Show($"Error adding employee: {ex.Message}", "Error");
             }
         }
-
         private string GenerateRandomPassword()
         {
-            return Path.GetRandomFileName().Replace(".", "").Substring(0, 8);
+            return Path.GetRandomFileName().Replace(".", "").Substring(0, 12);
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {

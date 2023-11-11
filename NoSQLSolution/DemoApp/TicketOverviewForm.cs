@@ -17,11 +17,11 @@ namespace DemoApp
     {
         private TicketsLogic ticketsLogic;
         private Employee employee;
-
+        private Employee currentUser;
         public TicketOverviewForm(Employee employee)
         {
             InitializeComponent();
-
+            this.currentUser = currentUser;
             btnUserManagement.Click += btnUserManagement_Click;
             btnCloseTicket.Click += btnCloseTicket_Click;
 
@@ -39,12 +39,11 @@ namespace DemoApp
                 txtBoxFilter.Visible = false;
             }
         }
-
         private void loadTickets()
         {
             try
             {
-                listViewResults.Items.Clear(); 
+                listViewResults.Items.Clear();
 
                 List<Ticket> tickets = ticketsLogic.GetAllTickets();
 
@@ -69,7 +68,6 @@ namespace DemoApp
             if (txtBoxFilter.Text.Length > 0)
                 loadTickets();
         }
-
         private void listViewResults_MouseClick(object sender, MouseEventArgs e)
         {
             ListViewItem selectedItem = listViewResults.SelectedItems[0];
@@ -85,7 +83,6 @@ namespace DemoApp
                 loadTickets();
             }
         }
-
         private void listViewResults_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             try
@@ -96,10 +93,9 @@ namespace DemoApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error ocurred");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
-
         private void btnUserManagement_Click(object sender, EventArgs e)
         {
             try
@@ -112,34 +108,39 @@ namespace DemoApp
 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error ocurred");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
         private void btnCloseTicket_Click(object sender, EventArgs e)
         {
-            if (listViewResults.SelectedItems.Count == 0)
+            if (currentUser != null && currentUser.UserType == UserType.ServiceDesk)
             {
-                MessageBox.Show("Please select a ticket to close.");
-                return;
+                if (listViewResults.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Please select a ticket to close.");
+                    return;
+                }
+                var result = MessageBox.Show("Are you sure you want to close this ticket?", "Confirm Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        var selectedTicketItem = listViewResults.SelectedItems[0];
+                        var selectedTicket = (Ticket)selectedTicketItem.Tag;
+
+                        ticketsLogic.CloseTicket(selectedTicket.TicketId);
+                        listViewResults.Items.Remove(selectedTicketItem);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error closing ticket: {ex.Message}", "Error");
+                    }
+                }
             }
-
-            var result = MessageBox.Show("Are you sure you want to close this ticket?", "Confirm Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            else
             {
-                try
-                {
-                    var selectedTicketItem = listViewResults.SelectedItems[0];
-                    var selectedTicket = (Ticket)selectedTicketItem.Tag;
-
-                    ticketsLogic.CloseTicket(selectedTicket.TicketId);
-                    listViewResults.Items.Remove(selectedTicketItem); 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error closing ticket: {ex.Message}", "Error");
-                }
+                MessageBox.Show("Only ServiceDesk users are allowed to close tickets.", "Access Denied");
             }
         }
-
     }
 }

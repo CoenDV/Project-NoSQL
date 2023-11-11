@@ -16,8 +16,6 @@ namespace DemoApp
     {
         private EmployeeLogic employeeLogic;
         private Employee currentUser; 
-
-
         public ManageUsersForm()
         {
             InitializeComponent();
@@ -25,14 +23,12 @@ namespace DemoApp
             btnAddUser.Click += BtnAddUser_Click;
             Load += ManageUsersForm_Load; 
         }
-
         public ManageUsersForm(Employee currentUser)
         {
             InitializeComponent();
             this.currentUser = currentUser; 
             btnAddUser.Enabled = currentUser.UserType == UserType.ServiceDesk; 
         }
-
         private void BtnAddUser_Click(object sender, EventArgs e)
         {
             if (currentUser != null && currentUser.UserType == UserType.ServiceDesk)
@@ -42,18 +38,15 @@ namespace DemoApp
             }
             else
             {
-                MessageBox.Show("Only ServiceDesk users are allowed to add new users.", "Access Denied");
+                MessageBox.Show("Only serviceDesk users are allowed to add new users.");
             }
         }
-
-
         private void ManageUsersForm_Load(object sender, EventArgs e)
         {
             InitializeListViewColumns();
             lvUsers.Items.Clear();
             LoadUsers(); 
         }
-
         private void InitializeListViewColumns()
         {
             lvUsers.Columns.Clear();
@@ -64,7 +57,6 @@ namespace DemoApp
             lvUsers.Columns.Add("Email", 200); 
             lvUsers.Columns.Add("Password", 200); 
         }
-
         private void LoadUsers()
         {
             var employees = employeeLogic.GetAllRegularUsers(); 
@@ -73,7 +65,6 @@ namespace DemoApp
                 AddUserToListView(employee, "*****"); 
             }
         }
-
         public void AddUserToListView(Employee employee, string password)
         {
             var item = new ListViewItem(new[] {
@@ -82,11 +73,8 @@ namespace DemoApp
                 employee.Email,
                 employee.Password,
             });
-
             lvUsers.Items.Add(item);
             lvUsers.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
-
-       
     }
 }
