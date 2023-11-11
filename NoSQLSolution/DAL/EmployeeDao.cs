@@ -16,5 +16,14 @@ namespace DAL
             var filter = Builders<Employee>.Filter.Eq("UserType", UserType.RegularUser);
             return database.GetCollection<Employee>("Employees").Find(filter).ToList();
         }
+        public void Insert(Employee employee)
+        {
+            database.GetCollection<Employee>("Employees").InsertOne(employee);
+        }
+
+        public Employee Get(ObjectId id)
+        {
+            return database.GetCollection<Employee>("Employees").Find<Employee>(employee => employee._id == id).FirstOrDefault();
+        }
     }
 }

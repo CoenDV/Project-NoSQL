@@ -17,8 +17,12 @@ namespace Model
         public string Username;
         public string Password;
         public UserType UserType;
+        public LocationBranch BranchLocation;  
+        public string Phonenumber;
 
-        public Employee(ObjectId id, int ID, string email, string firstname, string lastname, string username, string password, UserType userType)
+        public Employee(ObjectId id, int ID, string email, string firstname, string lastname,
+                        string username, string password, UserType userType,
+                        LocationBranch branchLocation, string phoneNumber)
         {
             _id = id;
             EmployeeId = ID;
@@ -28,11 +32,27 @@ namespace Model
             Username = username;
             Password = password;
             UserType = userType;
+            BranchLocation = branchLocation;
+            Phonenumber = phoneNumber;
+        }
+        public Employee(int ID, string email, string firstname, string lastname,
+                        string username, string password, UserType userType,
+                        LocationBranch branchLocation, string phoneNumber)
+        {
+            EmployeeId = ID;
+            Email = email;
+            Firstname = firstname;
+            Lastname = lastname;
+            Username = username;
+            Password = password; 
+            UserType = userType;
+            BranchLocation = branchLocation;
+            Phonenumber = phoneNumber;
         }
 
-        public override string ToString()
+        public Employee()
         {
-            return this.Username.ToString();
         }
     }
 }
+

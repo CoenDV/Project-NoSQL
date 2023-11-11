@@ -44,6 +44,7 @@
             this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblFilter = new System.Windows.Forms.Label();
+            this.btnCloseTicket = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,12 +178,23 @@
             this.lblFilter.TabIndex = 10;
             this.lblFilter.Text = "Filter by E-mail:";
             // 
+            // btnCloseTicket
+            // 
+            this.btnCloseTicket.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnCloseTicket.Location = new System.Drawing.Point(342, 170);
+            this.btnCloseTicket.Name = "btnCloseTicket";
+            this.btnCloseTicket.Size = new System.Drawing.Size(105, 30);
+            this.btnCloseTicket.TabIndex = 12;
+            this.btnCloseTicket.Text = "CLOSE TICKET";
+            this.btnCloseTicket.UseVisualStyleBackColor = false;
+            // 
             // TicketOverviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(644, 811);
+            this.Controls.Add(this.btnCloseTicket);
             this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.listViewResults);
             this.Controls.Add(this.btnCreateIncident);
@@ -221,5 +233,6 @@
         private System.Windows.Forms.ColumnHeader Date;
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.Label lblFilter;
+        private System.Windows.Forms.Button btnCloseTicket;
     }
 }

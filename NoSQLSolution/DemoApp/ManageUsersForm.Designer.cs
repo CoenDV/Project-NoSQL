@@ -42,8 +42,8 @@
             this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddUser = new System.Windows.Forms.Button();
-            this.txtBoxFilter = new System.Windows.Forms.TextBox();
             this.lblUserManagement = new System.Windows.Forms.Label();
+            this.lvUsers = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,32 +126,35 @@
             this.btnAddUser.TabIndex = 14;
             this.btnAddUser.Text = "+ ADD NEW USER";
             this.btnAddUser.UseVisualStyleBackColor = true;
-            // 
-            // txtBoxFilter
-            // 
-            this.txtBoxFilter.Location = new System.Drawing.Point(24, 170);
-            this.txtBoxFilter.Name = "txtBoxFilter";
-            this.txtBoxFilter.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxFilter.TabIndex = 13;
+            this.btnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // lblUserManagement
             // 
             this.lblUserManagement.AutoSize = true;
             this.lblUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.25F);
-            this.lblUserManagement.Location = new System.Drawing.Point(20, 120);
+            this.lblUserManagement.Location = new System.Drawing.Point(20, 130);
             this.lblUserManagement.Name = "lblUserManagement";
             this.lblUserManagement.Size = new System.Drawing.Size(285, 38);
             this.lblUserManagement.TabIndex = 12;
             this.lblUserManagement.Text = "User management";
+            // 
+            // lvUsers
+            // 
+            this.lvUsers.HideSelection = false;
+            this.lvUsers.Location = new System.Drawing.Point(27, 233);
+            this.lvUsers.Name = "lvUsers";
+            this.lvUsers.Size = new System.Drawing.Size(593, 458);
+            this.lvUsers.TabIndex = 16;
+            this.lvUsers.UseCompatibleStateImageBehavior = false;
             // 
             // ManageUsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 811);
+            this.Controls.Add(this.lvUsers);
             this.Controls.Add(this.listViewResults);
             this.Controls.Add(this.btnAddUser);
-            this.Controls.Add(this.txtBoxFilter);
             this.Controls.Add(this.lblUserManagement);
             this.Controls.Add(this.lblSubTitle);
             this.Controls.Add(this.lblTitle);
@@ -161,6 +164,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "ManageUsersForm";
             this.Text = "ManageUsersForm";
+            this.Load += new System.EventHandler(this.ManageUsersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,7 +186,10 @@
         private System.Windows.Forms.ColumnHeader Date;
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.Button btnAddUser;
-        private System.Windows.Forms.TextBox txtBoxFilter;
         private System.Windows.Forms.Label lblUserManagement;
+        private System.Windows.Forms.ListView lvUsers;
+
+
+
     }
 }

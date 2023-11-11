@@ -44,5 +44,9 @@ namespace Logic
         {
             ticketsDao.updateTicket(ticket);
         }
+        public void CloseTicket(int ticketId)
+        {
+            ticketsDao.CloseTicket(ticketId);
+        }
     }
 }

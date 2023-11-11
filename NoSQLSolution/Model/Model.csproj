@@ -113,6 +113,7 @@
     <Compile Include="Databases_Model.cs" />
     <Compile Include="Deadlines.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="LocationBranch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketPriority.cs" />

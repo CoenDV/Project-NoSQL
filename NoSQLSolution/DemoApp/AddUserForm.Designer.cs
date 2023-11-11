@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxLocation = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbLocationBranch = new System.Windows.Forms.ComboBox();
+            this.cbUserType = new System.Windows.Forms.ComboBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtboxLastName = new System.Windows.Forms.TextBox();
@@ -44,24 +44,24 @@
             this.txtboxFirstName = new System.Windows.Forms.TextBox();
             this.txtboxEmail = new System.Windows.Forms.TextBox();
             this.txtboxPhoneNumber = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.chkSendPassword = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
-            // comboBoxLocation
+            // cbLocationBranch
             // 
-            this.comboBoxLocation.FormattingEnabled = true;
-            this.comboBoxLocation.Location = new System.Drawing.Point(292, 219);
-            this.comboBoxLocation.Name = "comboBoxLocation";
-            this.comboBoxLocation.Size = new System.Drawing.Size(250, 21);
-            this.comboBoxLocation.TabIndex = 33;
+            this.cbLocationBranch.FormattingEnabled = true;
+            this.cbLocationBranch.Location = new System.Drawing.Point(292, 219);
+            this.cbLocationBranch.Name = "cbLocationBranch";
+            this.cbLocationBranch.Size = new System.Drawing.Size(250, 21);
+            this.cbLocationBranch.TabIndex = 33;
             // 
-            // comboBox2
+            // cbUserType
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(292, 144);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(250, 21);
-            this.comboBox2.TabIndex = 30;
+            this.cbUserType.FormattingEnabled = true;
+            this.cbUserType.Location = new System.Drawing.Point(292, 144);
+            this.cbUserType.Name = "cbUserType";
+            this.cbUserType.Size = new System.Drawing.Size(250, 21);
+            this.cbUserType.TabIndex = 30;
             // 
             // btnSubmit
             // 
@@ -71,6 +71,7 @@
             this.btnSubmit.TabIndex = 28;
             this.btnSubmit.Text = "ADD USER";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCancel
             // 
@@ -80,6 +81,7 @@
             this.btnCancel.TabIndex = 27;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtboxLastName
             // 
@@ -182,16 +184,16 @@
             this.txtboxPhoneNumber.Size = new System.Drawing.Size(250, 20);
             this.txtboxPhoneNumber.TabIndex = 36;
             // 
-            // radioButton1
+            // chkSendPassword
             // 
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(292, 246);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(250, 30);
-            this.radioButton1.TabIndex = 37;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "yes, a password e-mail will be sent to the user";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.chkSendPassword.Checked = true;
+            this.chkSendPassword.Location = new System.Drawing.Point(292, 246);
+            this.chkSendPassword.Name = "chkSendPassword";
+            this.chkSendPassword.Size = new System.Drawing.Size(250, 30);
+            this.chkSendPassword.TabIndex = 37;
+            this.chkSendPassword.TabStop = true;
+            this.chkSendPassword.Text = "yes, a password e-mail will be sent to the user";
+            this.chkSendPassword.UseVisualStyleBackColor = true;
             // 
             // AddUserForm
             // 
@@ -199,12 +201,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(734, 461);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.chkSendPassword);
             this.Controls.Add(this.txtboxPhoneNumber);
             this.Controls.Add(this.txtboxEmail);
             this.Controls.Add(this.txtboxFirstName);
-            this.Controls.Add(this.comboBoxLocation);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cbLocationBranch);
+            this.Controls.Add(this.cbUserType);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtboxLastName);
@@ -225,8 +227,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxLocation;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbLocationBranch;
+        private System.Windows.Forms.ComboBox cbUserType;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtboxLastName;
@@ -241,6 +243,6 @@
         private System.Windows.Forms.TextBox txtboxFirstName;
         private System.Windows.Forms.TextBox txtboxEmail;
         private System.Windows.Forms.TextBox txtboxPhoneNumber;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton chkSendPassword;
     }
 }

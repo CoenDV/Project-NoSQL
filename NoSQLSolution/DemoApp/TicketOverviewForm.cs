@@ -22,16 +22,17 @@ namespace DemoApp
         {
             InitializeComponent();
 
+            btnUserManagement.Click += btnUserManagement_Click;
+            btnCloseTicket.Click += btnCloseTicket_Click;
+
             this.employee = employee;
             ticketsLogic = new TicketsLogic();
 
-            // set settings for the listview
             listViewResults.View = View.Details;
             listViewResults.FullRowSelect = true;
             listViewResults.MultiSelect = false;
 
             loadTickets();
-            // only show filter if user is a servicedesk employee, others can only see their own tickets
             if (employee.UserType == UserType.ServiceDesk)
             {
                 lblFilter.Visible = false;
@@ -41,12 +42,12 @@ namespace DemoApp
 
         private void loadTickets()
         {
-            List<Ticket> tickets = new List<Ticket>();
             try
             {
-                listViewResults.Items.Clear(); // making sure there is no duplicate items in the listview
+                listViewResults.Items.Clear(); 
 
-                tickets = ticketsLogic.loadTickets(employee);
+                List<Ticket> tickets = ticketsLogic.GetAllTickets();
+
                 foreach (Ticket ticket in tickets)
                 {
                     ListViewItem ticketItem = new ListViewItem($"{ticket.TicketId}");
@@ -63,10 +64,8 @@ namespace DemoApp
                 MessageBox.Show(ex.Message, "Error ocurred");
             }
         }
-
         private void txtBoxFilter_Leave(object sender, EventArgs e)
         {
-            // Only use filter if text is entered
             if (txtBoxFilter.Text.Length > 0)
                 loadTickets();
         }
@@ -78,15 +77,12 @@ namespace DemoApp
 
         private void btnCreateIncident_Click(object sender, EventArgs e)
         {
-            try
+            AddTicketForm addTicketForm = new AddTicketForm(employee);
+            var dialogResult = addTicketForm.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
             {
-                AddTicketForm addTicketForm = new AddTicketForm(employee);
-                addTicketForm.ShowDialog();
                 loadTickets();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error ocurred");
             }
         }
 
@@ -103,5 +99,47 @@ namespace DemoApp
                 MessageBox.Show(ex.Message, "Error ocurred");
             }
         }
+
+        private void btnUserManagement_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ManageUsersForm manageUsersForm = new ManageUsersForm();
+                this.Hide();
+                manageUsersForm.ShowDialog();
+                this.Close();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error ocurred");
+            }
+        }
+        private void btnCloseTicket_Click(object sender, EventArgs e)
+        {
+            if (listViewResults.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select a ticket to close.");
+                return;
+            }
+
+            var result = MessageBox.Show("Are you sure you want to close this ticket?", "Confirm Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    var selectedTicketItem = listViewResults.SelectedItems[0];
+                    var selectedTicket = (Ticket)selectedTicketItem.Tag;
+
+                    ticketsLogic.CloseTicket(selectedTicket.TicketId);
+                    listViewResults.Items.Remove(selectedTicketItem); 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error closing ticket: {ex.Message}", "Error");
+                }
+            }
+        }
+
     }
 }

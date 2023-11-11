@@ -117,6 +117,7 @@ namespace DemoApp
             else
             {
                 ticketsLogic.insertTicket(new Ticket(MongoDB.Bson.ObjectId.Empty, -1, employee._id, employee.Email, dateTimePickerTicket.Value, (TypeOfIncident)Enum.Parse(typeof(TypeOfIncident), comboBoxType.Text), (TicketPriority)Enum.Parse(typeof(TicketPriority), comboBoxPriority.Text), (Deadlines)Enum.Parse(typeof(Deadlines), comboBoxDeadline.Text), textBoxDescription.Text));
+                this.DialogResult = DialogResult.OK;
                 this.Close();
                 MessageBox.Show("ticket is added", "");
             }
