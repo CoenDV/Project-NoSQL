@@ -18,14 +18,6 @@ namespace Logic
             ticketsDao = new TicketsDao();
         }
 
-        public List<Ticket> loadTickets(Employee employee)
-        {
-            if (employee.UserType == UserType.ServiceDesk)
-                return GetAllTickets();
-            else
-                return getTicketsByEmail(employee.Email);
-        }
-
         public List<Ticket> GetAllTickets()
         {
             return ticketsDao.GetAllTickets();

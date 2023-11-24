@@ -21,13 +21,13 @@ namespace DAL
 
         public List<Ticket> GetAllTickets()
         {
-            FilterDefinition<Ticket> filter = Builders<Ticket>.Filter.Gt("Priority", TicketPriority.Closed); // Only check for tickets that are relevant
+            var filter = Builders<Ticket>.Filter.Gt("Priority", TicketPriority.Closed); // Only check for tickets that are relevant
             return ticketCollection.Find(filter).ToList();
         }
 
         public List<Ticket> getTicketsByEmail(string Email)
         {
-            FilterDefinition<Ticket> filter = Builders<Ticket>.Filter.Eq("Email", Email);
+            var filter = Builders<Ticket>.Filter.Eq("Email", Email);
             return ticketCollection.Find(filter).ToList();
         }
 
@@ -39,8 +39,8 @@ namespace DAL
 
         public void updateTicket(Ticket ticket)
         {
-                FilterDefinition<Ticket> filter = Builders<Ticket>.Filter.Eq("TicketId", ticket.TicketId);
-                UpdateDefinition<Ticket> update = Builders<Ticket>.Update
+                var filter = Builders<Ticket>.Filter.Eq("TicketId", ticket.TicketId);
+                var update = Builders<Ticket>.Update
                     .Set("Email", ticket.Email)
                     .Set("Date", ticket.Date)
                     .Set("Incident", ticket.Incident)

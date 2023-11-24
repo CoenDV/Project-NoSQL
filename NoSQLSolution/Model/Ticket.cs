@@ -10,7 +10,7 @@ namespace Model
     // classes and methods added by Coen de Vries
     public class Ticket
     {
-        public ObjectId _id { get; set; }
+        public ObjectId _id { get; }
         public int TicketId;
         public ObjectId EmployeeId;
         public string Email;

@@ -16,7 +16,7 @@ namespace DemoApp
     // classes and methods added by Coen de Vries
     public partial class AddTicketForm : Form
     {
-        protected Employee employee; // protected so it can be used in inherited form TicketView
+        private Employee employee;
 
         protected TicketsLogic ticketsLogic;
 
